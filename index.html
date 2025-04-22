@@ -1,0 +1,101 @@
+<!DOCTYPE html><html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Jadu Gang 022</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #000428, #004e92);
+      color: black;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .container {
+      padding: 20px;
+    }
+    .server-box, .result-box {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      margin: 10px auto;
+      border-radius: 10px;
+      width: 300px;
+      border: 1px solid white;
+    }
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .result-display {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+    .button {
+      background-color: #ff4b2b;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background-color: rgba(255,255,255,0.1);
+      margin: 5px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .warning {
+      margin-top: 10px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">JADU GANG 022 ❤️</div>
+    <div class="server-box">SERVER CONNECTED ✔️❤️</div>
+    <div class="result-box">
+      <div>PERIODO NO.</div>
+      <div class="result-display" id="result">BIG</div>
+    </div>
+    <button class="button" onclick="showResult()"> Result </button>
+    <div class="warning" id="warning"></div>
+    <ul id="history"></ul>
+  </div><audio id="jaduSound" src="https://www.soundjay.com/button/beep-07.wav"></audio>
+
+  <script>
+    let shown = false;
+
+    function showResult() {
+      const warning = document.getElementById('warning');
+      if (shown) {
+        warning.textContent = 'WAIT BRO ✋️ ☠️';
+        return;
+      }
+
+      const sound = document.getElementById("jaduSound");
+      sound.play();
+      warning.textContent = '';
+      shown = true;
+
+      const trendValue = Math.floor(Math.random() * 10);
+      const bigSmall = trendValue % 2 === 0 ? "Grande" : "Piccolo";
+      const number = bigSmall === "Grande" ? 5 + Math.floor(Math.random() * 5) : Math.floor(Math.random() * 5);
+      const result = `${bigSmall} ${number}`;
+      document.getElementById("result").textContent = result;
+
+      const li = document.createElement("li");
+      li.textContent = result;
+      document.getElementById("history").prepend(li);
+
+      setTimeout(() => shown = false, 60000); // 1 minute wait
+    }
+  </script></body>
+</html>
